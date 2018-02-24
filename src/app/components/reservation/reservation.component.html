@@ -100,38 +100,85 @@
         </div>
         <form class="form">
           <div class="form-group row">
-            <label for="example-month-input" class="col-2 col-form-label">From</label>
+            <label for="example-month-input" class="col-2 col-form-label">To</label>
             <div class="col-10">
-              <select class="custom-select col-12" id="inlineFormCustomSelect">
-                <option selected="">Choose...</option>
-                <option value="1">Karachi</option>
-                <option value="2">Lahour</option>
-                <option value="3">Multan</option>
-                <option value="4">Islamabad</option>
+              <select class="custom-select col-12" (change)="onChangeTo($event.target.value,'to')" id="inlineFormCustomSelect">
+                <option *ngFor="let i of menu">{{i}}</option>
               </select>
             </div>
           </div>
           <div class="form-group row">
-            <label for="example-month-input" class="col-2 col-form-label">To</label>
+            <label for="example-month-input" class="col-2 col-form-label">From</label>
             <div class="col-10">
-              <select class="custom-select col-12" *ngFor="let man of menu; let i of index" id="inlineFormCustomSelect">
-                <option>{{man}}</option>
+              <select class="custom-select col-12" (change)="onChangeTo($event.target.value,'from')" id="inlineFormCustomSelect">
+                <option *ngFor="let i of men">{{i}}</option>
               </select>
             </div>
           </div>
           <div class="form-group row">
             <label for="example-date-input" class="col-2 col-form-label">Date</label>
             <div class="col-10">
-              <input class="form-control" type="date" value="2018-02-24" id="example-date-input">
+              <input class="form-control" (change)="checkflight($event.target.value)" type="date" placeholder="2018-02-24" id="example-date-input">
+            </div>
+          </div>
+          <div *ngIf="isFilter" class="form-group row">
+              <div class="col-12">
+                  <div class="card">
+                      <div class="card-body">
+                          <!-- <h4 class="card-title">Striped Table</h4> -->
+                          <!-- <h6 class="card-subtitle">Add<code>.table-striped</code>for borders on all sides of the table and cells.</h6> -->
+                          <div class="table-responsive">
+                              <table class="table table-striped">
+                                  <thead>
+                                      <tr>
+                                          <th>Flight</th>
+                                          <th>Depart</th>
+                                          <th>Route</th>
+                                          <th class="text-nowrap">Action</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td>Lunar probe project</td>
+                                          <td>
+                                              <div class="progress progress-xs margin-vertical-10 ">
+                                                  <div class="progress-bar bg-danger" style="width: 35% ;height:6px;"></div>
+                                              </div>
+                                          </td>
+                                          <td>May 15, 2015</td>
+                                          <td class="text-nowrap">
+                                              <input type="radio" >
+                                              <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                              <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a>
+                                          </td>
+                                      </tr>
+                                      
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="form-group m-t-40 row">
+            <label for="example-text-input" class="col-2 col-form-label">FirstName</label>
+            <div class="col-10">
+              <input class="form-control" type="text" placeholder="firstname" id="example-text-input">
             </div>
           </div>
           <div class="form-group m-t-40 row">
-            <label for="example-text-input" class="col-2 col-form-label">Text</label>
+            <label for="example-text-input" class="col-2 col-form-label">SurName</label>
             <div class="col-10">
-              <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+              <input class="form-control" type="text" placeholder="surname" id="example-text-input">
             </div>
           </div>
           <div class="form-group row">
+            <label for="example-number-input" class="col-2 col-form-label">No. seats reservation</label>
+            <div class="col-10">
+              <input class="form-control" type="number" placeholder="1" id="example-number-input">
+            </div>
+          </div>
+          <!-- <div class="form-group row">
             <label for="example-search-input" class="col-2 col-form-label">Search</label>
             <div class="col-10">
               <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
@@ -203,8 +250,12 @@
             <div class="col-10">
               <input type="range" class="form-control" id="range" value="50">
             </div>
-          </div>
+          </div> -->
         </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info waves-effect" data-dismiss="modal" (click)="save()">Submit</button>
+          <!-- <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button> -->
+        </div>
       </div>
     </div>
   </div>
