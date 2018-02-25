@@ -48,9 +48,9 @@ export class ReservationComponent implements OnInit {
     this.reservationForm = this.fb.group({
       to: ['', Validators.required],
       from: ['', Validators.required],
-      departure: ['', Validators.required]
-      // FirstName: ['', Validators.required],
-      //  SurName: ['1', Validators.required],
+      departure: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       //NoOfSeats: ['', Validators.required],
       //WalletId: ['', Validators.required]
     })
@@ -98,13 +98,13 @@ export class ReservationComponent implements OnInit {
 
     console.log(n);
     _body['departure'] = n;
-     
-    let num = Math.floor(((Math.random() + 1)*10000))
-    _body['ticketId'] = num; 
+
+    let num = Math.floor(((Math.random() + 1) * 10000))
+    _body['ticketId'] = num;
     let body = JSON.stringify(_body);
 
-    console.log("103",body);
-    
+    console.log("103", body);
+
 
     const headers = new Headers();
     headers.append('Content-Type', 'application/json') // ... Set content type to JSON
@@ -114,6 +114,15 @@ export class ReservationComponent implements OnInit {
 
       .subscribe(val => {
         console.log(val);
+
+        this.reservationForm.setValue({
+          to: "",
+          from: "",
+          departure: "",
+          firstName: "",
+          lastName: "",
+        })
+
       },
         response => {
           console.log(response);

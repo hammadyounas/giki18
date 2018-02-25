@@ -28,9 +28,34 @@ export class MybalanceComponent implements OnInit {
   }
 
   save() {
-    
-  }
 
+    let _body = {
+
+      moneyId : 1,
+      amount : 3500
+    };
+
+    let body = JSON.stringify(_body);
+
+    console.log("103", body);
+
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json') // ... Set content type to JSON
+    let options = new RequestOptions({ method: RequestMethod.Post, headers: headers }); // Create a request option
+
+    this.http.post('http://192.168.8.115:3000/api/Money', body, options)
+
+      .subscribe(val => {
+        console.log(val);
+      },
+        response => {
+          console.log(response);
+        },
+        () => {
+        })
+
+  }
 
 
 }
