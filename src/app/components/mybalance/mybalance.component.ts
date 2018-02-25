@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http, Headers, RequestOptions, RequestMethod } from '@angular/http';
 
 @Component({
   selector: 'app-mybalance',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MybalanceComponent implements OnInit {
 
-  constructor() { }
+  recordsArr = [];
+  constructor(private http: Http) {
 
-  ngOnInit() {
+    
+    
   }
+  
+  ngOnInit() {
+    this.recordsArr = [];
+   
+      this.http.get('http://192.168.8.115:3000/api/Ticket')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.recordsArr = data;
+          
+        })
+    
+  }
+
+  save() {
+    
+  }
+
+
 
 }

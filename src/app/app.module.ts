@@ -20,6 +20,8 @@ import { SearchPipe } from './pipes/search.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { MybalanceComponent } from './components/mybalance/mybalance.component';
+import { AdminRecordComponent } from './components/admin-record/admin-record.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { MybalanceComponent } from './components/mybalance/mybalance.component';
     PropertiesComponent,
     SearchPipe,
     ReservationComponent,
-    MybalanceComponent
+    MybalanceComponent,
+    AdminRecordComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
