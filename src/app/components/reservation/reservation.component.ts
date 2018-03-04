@@ -110,7 +110,7 @@ export class ReservationComponent implements OnInit {
     headers.append('Content-Type', 'application/json') // ... Set content type to JSON
     let options = new RequestOptions({ method: RequestMethod.Post, headers: headers }); // Create a request option
 
-    this.http.post('http://192.168.8.115:3000/api/Ticket', body, options)
+    this.http.post('http://192.168.8.112:3000/api/Ticket', body, options)
 
       .subscribe(val => {
         console.log(val);

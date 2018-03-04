@@ -18,7 +18,7 @@ export class MybalanceComponent implements OnInit {
   ngOnInit() {
     this.recordsArr = [];
    
-      this.http.get('http://192.168.8.115:3000/api/Ticket')
+      this.http.get('http://192.168.8.112:3000/api/Ticket')
         .map(res => res.json())
         .subscribe(data => {
           this.recordsArr = data;
@@ -44,7 +44,7 @@ export class MybalanceComponent implements OnInit {
     headers.append('Content-Type', 'application/json') // ... Set content type to JSON
     let options = new RequestOptions({ method: RequestMethod.Post, headers: headers }); // Create a request option
 
-    this.http.post('http://192.168.8.115:3000/api/Money', body, options)
+    this.http.post('http://192.168.8.112:3000/api/Money', body, options)
 
       .subscribe(val => {
         console.log(val);
